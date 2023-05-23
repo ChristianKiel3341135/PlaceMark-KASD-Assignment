@@ -14,6 +14,7 @@ export const accountsController = {
       return h.view("Signup", { title: "Sign up to PlaceMark" });
     },
   },
+
   signup: {
     auth: false,
     validate: {
@@ -49,7 +50,7 @@ export const accountsController = {
       const { email, password } = request.payload;
       const user = await db.userStore.getUserByEmail(email);
       if (!user || user.password !== password) {
-        return h.redirect("/");
+        return h.view("Login", { title: "Log in error", loginError: "Wrong Password..." });
       }
       request.cookieAuth.set({ id: user._id });
       return h.redirect("/dashboard");
