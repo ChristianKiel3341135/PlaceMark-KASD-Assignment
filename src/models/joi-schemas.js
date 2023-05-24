@@ -21,6 +21,14 @@ export const UserSpecPlus = UserSpec.keys({
 
 export const UserArray = Joi.array().items(UserSpecPlus).label("UserArray");
 
+export const PlaceMarkSpec = Joi.object()
+    .keys({
+        name: Joi.string().example("Cinema").required(),
+        description: Joi.string().example("Watch Movies").required(),
+        latitude: Joi.number().example(12.214124).required(),
+        longitude: Joi.number().example(12.214124).required(),
+    })
+
 export const JwtAuth = Joi.object()
   .keys({
     success: Joi.boolean().example("true").required(),

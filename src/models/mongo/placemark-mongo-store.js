@@ -17,7 +17,7 @@ export const placemarkMongoStore = {
     async addPlacemark(placemark) {
         const newPlacemark = new Placemark(placemark);
         const placemarkObj = await newPlacemark.save();
-        const samePlacemark = await this.getUserById(placemarkObj._id);
+        const samePlacemark = await this.getPlacemarkById(placemarkObj._id);
         return samePlacemark;
     },
 
