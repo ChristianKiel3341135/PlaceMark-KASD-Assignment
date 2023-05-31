@@ -18,18 +18,21 @@ export const testUsers = [
     lastName: "Simpson",
     email: "homer@simpson.com",
     password: "secret",
+    isAdmin: false,
   },
   {
     firstName: "Marge",
     lastName: "Simpson",
     email: "marge@simpson.com",
     password: "secret",
+    isAdmin: false,
   },
   {
-    firstName: "Bart",
-    lastName: "Simpson",
-    email: "bart@simpson.com",
-    password: "secret",
+    firstName: "Admin",
+    lastName: "User",
+    email: "admin@user.com",
+    password: "admin",
+    isAdmin: true,
   },
 ];
 
