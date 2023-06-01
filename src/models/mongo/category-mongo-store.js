@@ -17,8 +17,7 @@ export const categoryMongoStore = {
     async addCategory(category) {
         const newCategory = new Category(category);
         const categoryObject = await newCategory.save();
-        const sameCategory = await this.getUserById(categoryObject._id);
-        return sameCategory;
+        return await this.getCategoryById(categoryObject._id);
     },
 
     async deleteCategoryById(id) {

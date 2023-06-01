@@ -29,6 +29,11 @@ export const PlaceMarkSpec = Joi.object()
         longitude: Joi.number().example(12.214124).required(),
     })
 
+export const CategorySpec = Joi.object()
+    .keys({
+        title: Joi.string().example("Entertainment").required(),
+    })
+
 export const JwtAuth = Joi.object()
   .keys({
     success: Joi.boolean().example("true").required(),

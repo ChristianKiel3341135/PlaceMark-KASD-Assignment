@@ -10,7 +10,7 @@ export const webRoutes = [
     { method: "POST", path: "/authenticate", config: accountsController.login },
 
     { method: "GET", path: "/dashboard", config: dashboardController.index },
-    { method: "POST", path: "/dashboard/addPois", config: dashboardController.addPois },
+    { method: "POST", path: "/dashboard/addCategory", config: dashboardController.addCategory },
 
     {
         method: "GET",

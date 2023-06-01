@@ -14,11 +14,11 @@ export const placemarkMongoStore = {
         return null;
     },
 
-    async addPlacemark(placemark) {
+    async addPlacemark(categoryId,placemark) {
+        placemark.categoryid = categoryId;
         const newPlacemark = new Placemark(placemark);
         const placemarkObj = await newPlacemark.save();
-        const samePlacemark = await this.getPlacemarkById(placemarkObj._id);
-        return samePlacemark;
+        return await this.getPlacemarkById(placemarkObj._id);
     },
 
     async deletePlacemarkById(id) {

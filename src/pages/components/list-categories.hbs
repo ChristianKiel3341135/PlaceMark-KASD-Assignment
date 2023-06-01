@@ -1,0 +1,17 @@
+{{#each categories}}
+  <div class="columns mt-3">
+    <div class="box box-link-hover-shadow" style="width: 100%">
+      <h2 class="title">
+        {{title}}
+        <a href="/category/{{_id}}" class="button">
+          <span class="icon is-small">
+            <i class="fas fa-folder-open"></i>
+          </span>
+        </a>
+        <a href="/dashboard/deletecategory/{{_id}}" class="button">
+          <i class="fas fa-trash"></i>
+        </a>
+      </h2>
+    </div>
+  </div>
+{{/each}}
