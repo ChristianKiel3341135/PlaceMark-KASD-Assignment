@@ -1,3 +1,5 @@
+import {db} from "../db.js";
+
 export const seedData = {
   users: {
     _model: "User",
@@ -34,10 +36,10 @@ export const seedData = {
   categories:{
     _model: "Category",
     entertainmentCategory: {
-      title: "Entertainment"
+      title: "Entertainment",
     },
     foodAndDrinksCategory: {
-      title: "Food and Drinks"
+      title: "Food and Drinks",
     },
   },
 

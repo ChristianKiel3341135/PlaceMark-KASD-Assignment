@@ -14,6 +14,11 @@ export const placemarkMongoStore = {
         return null;
     },
 
+    async getPlacemarksByCategoryId(id) {
+        const placemarks = await Placemark.find({ categoryid: id }).lean();
+        return placemarks;
+    },
+
     async addPlacemark(categoryId,placemark) {
         placemark.categoryid = categoryId;
         const newPlacemark = new Placemark(placemark);

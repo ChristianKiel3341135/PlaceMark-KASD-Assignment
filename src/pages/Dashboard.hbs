@@ -6,6 +6,8 @@
         {{> MainNavigator }}
     </div>
 </div>
+{{#if user.isAdmin}}
 {{> add-category}}
-{{> list-categories}}
+{{/if}}
+{{> list-categories }}
 

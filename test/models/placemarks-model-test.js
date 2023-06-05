@@ -1,20 +1,24 @@
 import { assert } from "chai";
 import { db } from "../../src/models/db.js";
-import { maggie, testPlacemarks, cinema} from "../fixtures.js";
+import { maggie, testPlacemarks, cinema, testCategory} from "../fixtures.js";
 import { assertSubset } from "../test-utils.js";
 
 suite("Placemark Model tests", () => {
+
     setup(async () => {
         db.init("mongo");
+        await db.categoryStore.deleteAll();
         await db.placemarkStore.deleteAll();
+        let newCategoryTest = await db.categoryStore.addCategory(testCategory);
         for (let i = 0; i < testPlacemarks.length; i += 1) {
             // eslint-disable-next-line no-await-in-loop
-            testPlacemarks[i] = await db.placemarkStore.addPlacemark(testPlacemarks[i]);
+            testPlacemarks[i] = await db.placemarkStore.addPlacemark(newCategoryTest._id,testPlacemarks[i]);
         }
     });
 
     test("create a placemark", async () => {
-        const newPlacemark = await db.userStore.addUser(cinema);
+        const newCategory = await db.categoryStore.addCategory(testCategory);
+        const newPlacemark = await db.placemarkStore.addPlacemark(newCategory._id,cinema);
         assertSubset(cinema, newPlacemark);
     });
 
@@ -27,7 +31,8 @@ suite("Placemark Model tests", () => {
     });
 
     test("get a placemark - success", async () => {
-        const placemark = await db.placemarkStore.addPlacemark(cinema);
+        const newCategory = await db.categoryStore.addCategory(testCategory);
+        const placemark = await db.placemarkStore.addPlacemark(newCategory._id,cinema);
         const returnedPlacemark = await db.placemarkStore.getPlacemarkById(placemark._id);
         assert.deepEqual(placemark, returnedPlacemark);
     });
