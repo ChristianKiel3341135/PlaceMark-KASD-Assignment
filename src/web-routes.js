@@ -1,5 +1,6 @@
 import { accountsController } from "./controllers/accounts-controller.js";
 import {dashboardController} from "./controllers/dashboard-controller.js";
+import {categoryController} from "./controllers/category-controller.js";
 
 export const webRoutes = [
     { method: "GET", path: "/", config: accountsController.index },
@@ -11,6 +12,10 @@ export const webRoutes = [
 
     { method: "GET", path: "/dashboard", config: dashboardController.index },
     { method: "POST", path: "/dashboard/addCategory", config: dashboardController.addCategory },
+    { method: "GET", path: "/dashboard/deleteCategory/{id}", config: dashboardController.deleteCategory },
+
+    { method: "GET", path: "/category/{id}", config: categoryController.index },
+    { method: "POST", path: "/category/{id}/addPoi", config: categoryController.addPoi },
 
     {
         method: "GET",

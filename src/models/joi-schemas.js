@@ -29,6 +29,7 @@ export const PlaceMarkSpec = Joi.object()
         description: Joi.string().example("Watch Movies").required(),
         latitude: Joi.number().example(12.214124).required(),
         longitude: Joi.number().example(12.214124).required(),
+        categoryid: IdSpec,
     })
 
 export const CategorySpec = Joi.object()

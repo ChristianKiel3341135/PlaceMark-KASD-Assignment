@@ -1,0 +1,11 @@
+<div class="columns is-vcentered">
+    <div class="column is-two-thirds">
+        {{> TitleBar title="PlaceMark" subTitle="Where do you want to go?"}}
+    </div>
+    <div class="column">
+        {{> MainNavigator }}
+    </div>
+</div>
+<h2 class="title is-size-2">{{category.title}}</h2>
+{{> add-placemarks }}
+{{> list-placemarks }}

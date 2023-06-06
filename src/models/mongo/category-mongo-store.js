@@ -11,7 +11,7 @@ export const categoryMongoStore = {
         if (id) {
             const category = await Category.findOne({ _id: id }).lean();
             if(category){
-                category.placemarks = await placemarkMongoStore.getPlacemarkById(category._id);
+                category.placemarks = await placemarkMongoStore.getPlacemarksByCategoryId(category._id);
             }
             return category;
         }

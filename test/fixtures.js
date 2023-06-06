@@ -37,7 +37,7 @@ export const testUsers = [
 ];
 
 export const testCategory = {
-  title:"Sport"
+  title:"Entertainment"
 }
 
 export const testCategories = [
