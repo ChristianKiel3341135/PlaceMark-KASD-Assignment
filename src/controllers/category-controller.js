@@ -4,9 +4,10 @@ import {PlaceMarkSpec} from "../models/joi-schemas.js";
 export const categoryController = {
     index: {
         handler: async function (request, h) {
+            const loggedInUser = request.auth.credentials;
             const category = await db.categoryStore.getCategoryById(request.params.id);
             console.log(category);
-            return h.view("CategoryView", {category: category});
+            return h.view("CategoryView", {category: category, user: loggedInUser});
         },
     },
 

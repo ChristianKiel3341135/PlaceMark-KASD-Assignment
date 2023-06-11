@@ -6,7 +6,6 @@ export const dashboardController ={
         handler: async function (request, h) {
             const loggedInUser = request.auth.credentials;
             const categories = await db.categoryStore.getAllCategories();
-            console.log(loggedInUser)
             return h.view("Dashboard", { title: "PlaceMark", user: loggedInUser, categories: categories });
         },
     },

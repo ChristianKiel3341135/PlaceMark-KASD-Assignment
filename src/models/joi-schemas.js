@@ -16,12 +16,11 @@ export const UserSpec = UserCredentialsSpec.keys({
 }).label("UserDetails");
 
 export const UserSpecPlus = UserSpec.keys({
-
   _id: IdSpec,
   __v: Joi.number(),
 }).label("UserDetailsPlus");
 
-export const UserArray = Joi.array().items(UserSpecPlus).label("UserArray");
+export const UserArraySpec = Joi.array().items(UserSpecPlus).label("UserArray");
 
 export const PlaceMarkSpec = Joi.object()
     .keys({
@@ -32,10 +31,24 @@ export const PlaceMarkSpec = Joi.object()
         categoryid: IdSpec,
     })
 
+export const PlacemarkSpecPlus = PlaceMarkSpec.keys({
+    _id: IdSpec,
+    __v: Joi.number(),
+}).label("PlacemarkDetailsPlus")
+
+export const PlacemarkArraySpec = Joi.array().items(PlaceMarkSpec).label("PlacemarkArray");
+
 export const CategorySpec = Joi.object()
     .keys({
         title: Joi.string().example("Entertainment").required(),
     })
+
+export const CategorySpecPlus = CategorySpec.keys({
+    _id: IdSpec,
+    __v: Joi.number(),
+}).label("CategoryDetailsPlus")
+
+export const CategoryArraySpec = Joi.array().items(CategorySpec).label("CategoryArray");
 
 export const JwtAuth = Joi.object()
   .keys({
