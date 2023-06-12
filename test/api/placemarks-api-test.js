@@ -3,9 +3,9 @@ import { assertSubset } from "../test-utils.js";
 import { apiService } from "./api-service.js";
 import {maggieCredentials, testCategory, testPlacemarks, cinema, testCategories, maggie} from "../fixtures.js";
 
+let myCategory = null;
 suite("Placemark API tests", () => {
-    let myCategory = null;
-
+//FIXME Authorization funktioniert nicht
     setup(async () => {
         await apiService.clearAuth();
         await apiService.createUser(maggie);

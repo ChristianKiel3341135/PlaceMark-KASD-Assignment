@@ -1,26 +1,28 @@
-import { EventEmitter } from "events";
 import { assert } from "chai";
 import { assertSubset } from "../test-utils.js";
-import {maggieCredentials, testCategory, testCategories, maggie} from "../fixtures.js";
+import {spongebobCredentials, testCategory, testCategories, spongebob} from "../fixtures.js";
 import {apiService} from "./api-service.js";
 
-EventEmitter.setMaxListeners(25);
-
 suite("Category API tests", () => {
-
+    let user = null;
+//FIXME Authorization funktioniert nicht
     setup(async () => {
         await apiService.clearAuth();
-        await apiService.createUser(maggie);
-        await apiService.authenticate(maggieCredentials);
+        user = await apiService.createUser(spongebob);
+        await apiService.authenticate(spongebobCredentials);
         await apiService.deleteAllCategories();
         await apiService.deleteAllUsers();
-        await apiService.createUser(maggie);
-        await apiService.authenticate(maggieCredentials);
+        await apiService.clearAuth();
+        user = await apiService.createUser(spongebob);
+        await apiService.authenticate(spongebobCredentials);
     });
 
     teardown(async () => {});
 
     test("create category", async () => {
+        await apiService.clearAuth();
+        await apiService.createUser(spongebob);
+        await apiService.authenticate(spongebobCredentials);
         const returnedCategory = await apiService.createCategory(testCategory);
         assert.isNotNull(returnedCategory);
         assertSubset(testCategory, returnedCategory);

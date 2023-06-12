@@ -29,18 +29,19 @@ export const PlaceMarkSpec = Joi.object()
         latitude: Joi.number().example(12.214124).required(),
         longitude: Joi.number().example(12.214124).required(),
         categoryid: IdSpec,
-    })
+    }).label("Placemark");
 
 export const PlacemarkSpecPlus = PlaceMarkSpec.keys({
     _id: IdSpec,
     __v: Joi.number(),
 }).label("PlacemarkDetailsPlus")
 
-export const PlacemarkArraySpec = Joi.array().items(PlaceMarkSpec).label("PlacemarkArray");
+export const PlacemarkArraySpec = Joi.array().items(PlacemarkSpecPlus).label("PlacemarkArray");
 
 export const CategorySpec = Joi.object()
     .keys({
         title: Joi.string().example("Entertainment").required(),
+        placemarks: PlacemarkArraySpec,
     })
 
 export const CategorySpecPlus = CategorySpec.keys({
@@ -48,7 +49,7 @@ export const CategorySpecPlus = CategorySpec.keys({
     __v: Joi.number(),
 }).label("CategoryDetailsPlus")
 
-export const CategoryArraySpec = Joi.array().items(CategorySpec).label("CategoryArray");
+export const CategoryArraySpec = Joi.array().items(CategorySpecPlus).label("CategoryArray");
 
 export const JwtAuth = Joi.object()
   .keys({

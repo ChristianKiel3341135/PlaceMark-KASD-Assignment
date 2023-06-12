@@ -12,6 +12,18 @@ export const maggieCredentials = {
   password: "secret",
 };
 
+export const spongebob = {
+  firstName: "Spongebob",
+  lastName: "Squarepants",
+  email: "sponge@bikinibottom.com",
+  password: "secret",
+};
+
+export const spongebobCredentials = {
+  email: "sponge@bikinibottom.com",
+  password: "secret",
+};
+
 export const testUsers = [
   {
     firstName: "Homer",

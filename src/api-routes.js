@@ -18,7 +18,7 @@ export const apiRoutes = [
     { method: "GET", path: "/api/categories/{id}", config: categoryApi.findOne },
 
     { method: "GET", path: "/api/placemarks", config: placemarkApi.find },
-    { method: "POST", path: "/api/placemarks", config: placemarkApi.create },
+    { method: "POST", path: "/api/categories/{id}/placemarks", config: placemarkApi.create },
     { method: "DELETE", path: "/api/placemarks/{id}", config: placemarkApi.deleteOne },
     { method: "DELETE", path: "/api/placemarks", config: placemarkApi.deleteAll },
     { method: "GET", path: "/api/placemarks/{id}", config: placemarkApi.findOne },
