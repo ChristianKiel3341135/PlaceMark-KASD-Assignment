@@ -61,11 +61,11 @@ async function init() {
 
     server.validator(Joi);
 
-    Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+    Handlebars.registerHelper('ifNotEqual', function(arg1, arg2, options) {
         console.log(arg1)
         console.log(arg2)
 
-        if(arg1 === arg2) {
+        if(arg1 !== arg2) {
             return options.fn(this);
         }
         return options.inverse(this);

@@ -1,6 +1,7 @@
 import { accountsController } from "./controllers/accounts-controller.js";
 import {dashboardController} from "./controllers/dashboard-controller.js";
 import {categoryController} from "./controllers/category-controller.js";
+import {userManagementController} from "./controllers/user-management-controller.js";
 
 export const webRoutes = [
     { method: "GET", path: "/", config: accountsController.index },
@@ -16,6 +17,10 @@ export const webRoutes = [
 
     { method: "GET", path: "/category/{id}", config: categoryController.index },
     { method: "POST", path: "/category/{id}/addPoi", config: categoryController.addPoi },
+
+    { method: "GET", path: "/manageUsers", config: userManagementController.index },
+    { method: "GET", path: "/manageUsers/deleteUser/{id}", config: userManagementController.deleteUser },
+
 
     {
         method: "GET",

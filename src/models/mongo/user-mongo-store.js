@@ -16,7 +16,9 @@ export const userMongoStore = {
 
   async addUser(user) {
     const newUser = new User(user);
-    newUser.isAdmin = false;
+    if(!newUser.isAdmin){
+      newUser.isAdmin = false;
+    }
     const userObj = await newUser.save();
     const u = await this.getUserById(userObj._id);
     return u;
