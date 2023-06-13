@@ -49,7 +49,7 @@ export const apiService = {
   },
 
   async deleteAllCategories() {
-    const res = await axios.delete(`${this.placemarkUrl}/api/users`);
+    const res = await axios.delete(`${this.placemarkUrl}/api/categories`);
     return res.data;
   },
 
@@ -59,8 +59,8 @@ export const apiService = {
   },
 
   //Placemark service
-  async createPlacemark(placemark) {
-    const res = await axios.post(`${this.placemarkUrl}/api/placemarks`, placemark);
+  async createPlacemark(id, placemark) {
+    const res = await axios.post(`${this.placemarkUrl}/api/categories/${id}/placemarks`, placemark);
     return res.data;
   },
 
@@ -84,8 +84,8 @@ export const apiService = {
   },
 
   async deletePlacemark(id) {
-    const response = await axios.delete(`${this.placemarkUrl}/api/placemarks/${id}`);
-    return response;
+    const res = await axios.delete(`${this.placemarkUrl}/api/placemarks/${id}`);
+    return res.data;
   },
 
   async authenticate(user) {

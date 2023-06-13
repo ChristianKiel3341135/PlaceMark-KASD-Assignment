@@ -52,12 +52,12 @@ suite("Category API tests", () => {
         assert.equal(returnedCategories.length, 0);
     });
 
-    test("remove non-existant playlist", async () => {
+    test("remove non-existant category", async () => {
         try {
             const response = await apiService.deleteCategory("not an id");
             assert.fail("Should not return a response");
         } catch (error) {
-            assert(error.response.data.message === "No Category with this id", "Incorrect Response Message");
+            assert(error.response.data.message === "No category with this id", "Incorrect Response Message");
         }
     });
 });
