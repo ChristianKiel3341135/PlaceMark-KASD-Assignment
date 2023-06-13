@@ -9,6 +9,7 @@ import {
 } from "../models/joi-schemas.js";
 import { db } from "../models/db.js";
 import { validationError } from "./logger.js";
+import Joi from "joi";
 
 export const placemarkApi = {
     find: {
@@ -70,7 +71,7 @@ export const placemarkApi = {
         tags: ["api"],
         description: "Create a placemark",
         notes: "Returns the newly created placemark",
-        validate: { payload: PlaceMarkSpec, failAction: validationError },
+        validate: { payload: PlaceMarkSpec, params: Joi.object({id: IdSpec}), failAction: validationError },
         response: { schema: PlacemarkSpecPlus, failAction: validationError },
     },
 

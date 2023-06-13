@@ -1,6 +1,10 @@
 <div class="columns is-vcentered">
     <div class="column is-two-thirds">
-        {{> TitleBar title="PlaceMark" subTitle="What Category interests you?"}}
+        {{#if user.isAdmin}}
+            {{> TitleBar title="PlaceMark Admin" subTitle="Admin Dashboard"}}
+        {{else}}
+            {{> TitleBar title="PlaceMark" subTitle="What Category interests you?"}}
+        {{/if}}
     </div>
     <div class="column">
         {{> MainNavigator }}

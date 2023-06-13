@@ -51,6 +51,7 @@ export const seedData = {
             " Nachos, Popcorn or both of course.",
         latitude: 49.013432,
         longitude: 12.101624,
+        categoryid: "->categories.entertainmentCategory"
       },
 
       newYorkBroadway: {
@@ -61,6 +62,7 @@ export const seedData = {
             " in the United States.",
         latitude: 40.790886,
         longitude: -73.974709,
+        categoryid: "->categories.entertainmentCategory"
       }
   },
 };

@@ -1,15 +1,22 @@
 <div class="box has-text-centered columns m-2">
-{{#if user.isAdmin}}
-    <a href="/manageUsers" class="column is-4">
-        <i class="fas fa-duotone fa-users fa-3x " style="color:rgba(0,0,0,0.74)"></i>
-        <h2>Manage Users</h2>
+    {{#if user.isAdmin}}
+        <a href="/manageUsers" class="column is-3">
+            <i class="fas fa-duotone fa-users fa-3x " style="color:rgba(0,0,0,0.74)"></i>
+            <h2>Manage Users</h2>
+        </a>
+
+        <a href="/analytics" class="column is-3">
+            <i class="fas fa-chart-line fa-3x"></i>
+            <h2>Analytics</h2>
+        </a>
+    {{/if}}
+
+    <a href="/userSettings" class="column is-3">
+        <i class="fas fa-wrench fa-3x" style="color:rgb(15,108,5)"></i>
+        <h2>User Settings</h2>
     </a>
-{{/if}}
-  <a href="/analytics" class="column is-4">
-      <i class="fas fa-chart-line fa-3x"></i>
-      <h2>Analytics</h2>
-  </a>
-  <a href="/logout" class="column is04">
+
+  <a href="/logout" class="column is-3">
     <i class="fas fa-sign-out-alt fa-3x" style="color:rgb(196,14,21)"></i>
       <h2>Log out</h2>
   </a>
