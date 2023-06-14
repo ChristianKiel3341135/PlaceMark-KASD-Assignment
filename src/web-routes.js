@@ -1,7 +1,8 @@
 import { accountsController } from "./controllers/accounts-controller.js";
 import {dashboardController} from "./controllers/dashboard-controller.js";
 import {categoryController} from "./controllers/category-controller.js";
-import {userManagementController} from "./controllers/user-management-controller.js";
+import {adminController} from "./controllers/admin-controller.js";
+import {userSettingsController} from "./controllers/user-settings-controller.js";
 
 export const webRoutes = [
     { method: "GET", path: "/", config: accountsController.index },
@@ -18,9 +19,12 @@ export const webRoutes = [
     { method: "GET", path: "/category/{id}", config: categoryController.index },
     { method: "POST", path: "/category/{id}/addPoi", config: categoryController.addPoi },
 
-    { method: "GET", path: "/manageUsers", config: userManagementController.index },
-    { method: "GET", path: "/manageUsers/deleteUser/{id}", config: userManagementController.deleteUser },
+    { method: "GET", path: "/manageUsers", config: adminController.index },
+    { method: "GET", path: "/manageUsers/deleteUser/{id}", config: adminController.deleteUser },
 
+    { method: "GET", path: "/userSettings", config: userSettingsController.index},
+    { method: "GET", path: "/userSettings/updateUser/{id}", config: userSettingsController.showUpdateUser},
+    { method: "POST", path: "/userSettings/updateUser/{id}", config: userSettingsController.updateUser},
 
     {
         method: "GET",

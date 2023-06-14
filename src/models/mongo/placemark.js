@@ -8,6 +8,10 @@ const placemarkSchema = new Schema({
          type: Schema.Types.ObjectId,
          ref: "Category",
     },
+    userid: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+    },
     description: String,
     latitude: Number,
     longitude: Number,

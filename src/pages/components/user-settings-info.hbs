@@ -1,0 +1,31 @@
+<div class="box box-link-hover-shadow" style="width: 100%">
+    <h2 class="title">
+        {{title}}
+    </h2>
+
+    <table class="table is-striped is-fullwidth">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Emailadress</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th><i class="fas fa-user"></i></th>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>
+                <a href="/userSettings/updateUser/{{user._id}}" class="button">
+                    <i class="fas fa-edit"></i>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>

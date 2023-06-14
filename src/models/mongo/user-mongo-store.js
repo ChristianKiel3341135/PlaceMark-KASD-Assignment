@@ -40,4 +40,13 @@ export const userMongoStore = {
   async deleteAll() {
     await User.deleteMany({});
   },
+
+  async updateUser(user, updatedUser){
+    const thisUser = await User.findOne({_id: user._id});
+    thisUser.firstName = updatedUser.firstName;
+    thisUser.lastName = updatedUser.lastName;
+    thisUser.email = updatedUser.email;
+    thisUser.password = updatedUser.password;
+    await thisUser.save();
+  }
 };

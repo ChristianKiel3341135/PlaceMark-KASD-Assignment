@@ -1,6 +1,6 @@
 import {db} from "../models/db.js";
 
-export const userManagementController= {
+export const adminController= {
     index: {
         handler: async function (request, h) {
             const loggedInUser = request.auth.credentials;
