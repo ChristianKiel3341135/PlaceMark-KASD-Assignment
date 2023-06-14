@@ -58,8 +58,9 @@ export const placemarkApi = {
         },
         handler: async function (request, h) {
             try {
+                const loggedInUser = request.auth.credentials;
                 const placemark = request.payload;
-                const newplacemark = await db.placemarkStore.addPlacemark(request.params.id ,placemark);
+                const newplacemark = await db.placemarkStore.addPlacemark(request.params.id ,placemark,loggedInUser._id);
                 if (newplacemark) {
                     return h.response(newplacemark).code(201);
                 }

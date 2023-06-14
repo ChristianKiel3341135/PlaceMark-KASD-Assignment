@@ -47,14 +47,14 @@ export const dashboardController ={
         },
         handler: async function (request, h) {
             const loggedInUser = request.auth.credentials;
+            const categoryid = request.params.id;
             const newPlacemark = {
-                userid: loggedInUser._id,
                 name: request.payload.name,
                 description: request.payload.description,
                 latitude: request.payload.latitude,
                 longitude: request.payload.longitude,
             };
-            await db.placemarkStore.addPlacemark(newPlacemark);
+            await db.placemarkStore.addPlacemark(categoryid,newPlacemark,loggedInUser._id);
             return h.redirect("/dashboard");
         },
     },

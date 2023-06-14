@@ -31,6 +31,7 @@ export const PlaceMarkSpec = Joi.object()
     }).label("Placemark");
 
 export const PlacemarkSpecPlus = PlaceMarkSpec.keys({
+    userid: IdSpec,
     categoryid: IdSpec,
     _id: IdSpec,
     __v: Joi.number(),
@@ -41,10 +42,11 @@ export const PlacemarkArraySpec = Joi.array().items(PlacemarkSpecPlus).label("Pl
 export const CategorySpec = Joi.object()
     .keys({
         title: Joi.string().example("Entertainment").required(),
-        placemarks: PlacemarkArraySpec,
+
     })
 
 export const CategorySpecPlus = CategorySpec.keys({
+    placemarks: PlacemarkArraySpec,
     _id: IdSpec,
     __v: Joi.number(),
 }).label("CategoryDetailsPlus")
