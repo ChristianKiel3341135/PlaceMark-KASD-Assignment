@@ -5,6 +5,11 @@
         <h2 class="title">
           {{name}}
           <i class="fas fa-map-pin" style="color:rgb(196,14,21)"></i>
+            {{#if ../user.isAdmin}}
+                <a href="/updatePlacemark/{{_id}}" class="button">
+                    Edit Placemark
+                </a>
+            {{/if}}
         </h2>
         <p>{{description}}</p>
         <p class="has-text-weight-bold">Lat. {{latitude}} Lgt. {{longitude}}</p>

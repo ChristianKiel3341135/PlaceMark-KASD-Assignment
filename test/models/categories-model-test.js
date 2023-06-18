@@ -1,6 +1,6 @@
 import { assert } from "chai";
 import { db } from "../../src/models/db.js";
-import { testCategory, testCategories} from "../fixtures.js";
+import {testCategory, testCategories, maggie, spongebob} from "../fixtures.js";
 import { assertSubset } from "../test-utils.js";
 
 suite("Category Model tests", () => {
@@ -18,6 +18,15 @@ suite("Category Model tests", () => {
         const category = await db.categoryStore.addCategory(testCategory);
         assertSubset(testCategory, category);
         assert.isDefined(category._id);
+    });
+
+    test("update a category" , async () => {
+        await db.categoryStore.deleteAll();
+        let newCategoryEntertainment = await db.categoryStore.addCategory(testCategory);
+        const newCategoryFood = await db.categoryStore.addCategory(testCategories[1]);
+        await db.categoryStore.updateCategory(newCategoryEntertainment, newCategoryFood);
+        newCategoryEntertainment = db.categoryStore.getCategoryById(newCategoryEntertainment._id);
+        assertSubset(newCategoryEntertainment, newCategoryFood);
     });
 
     test("delete all categories", async () => {

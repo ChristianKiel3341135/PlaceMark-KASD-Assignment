@@ -1,6 +1,6 @@
 import { assert } from "chai";
 import { db } from "../../src/models/db.js";
-import { maggie, testPlacemarks, cinema, testCategory} from "../fixtures.js";
+import {maggie, testPlacemarks, cinema, testCategory, testCategories} from "../fixtures.js";
 import { assertSubset } from "../test-utils.js";
 
 suite("Placemark Model tests", () => {
@@ -21,6 +21,17 @@ let user = null;
         const newCategory = await db.categoryStore.addCategory(testCategory);
         const newPlacemark = await db.placemarkStore.addPlacemark(newCategory._id,cinema,user._id);
         assertSubset(cinema, newPlacemark);
+    });
+
+    test("update a placemark" , async () => {
+        await db.categoryStore.deleteAll();
+        await db.placemarkStore.deleteAll();
+        const newCategory = await db.categoryStore.addCategory(testCategory);
+        let newPlacemark = await db.placemarkStore.addPlacemark(newCategory._id,cinema,user._id);
+        const anotherPlacemark = await db.placemarkStore.addPlacemark(newCategory._id,testPlacemarks[1],user._id);
+        await db.placemarkStore.updatePlacemark(newPlacemark, anotherPlacemark)
+        newPlacemark = await db.placemarkStore.getPlacemarkById(newPlacemark._id);
+        assertSubset(anotherPlacemark, newPlacemark);
     });
 
     test("delete all Placemarks", async () => {

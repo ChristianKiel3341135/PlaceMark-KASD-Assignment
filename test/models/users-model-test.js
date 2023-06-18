@@ -1,6 +1,6 @@
 import { assert } from "chai";
 import { db } from "../../src/models/db.js";
-import { maggie, testUsers } from "../fixtures.js";
+import { maggie, testUsers, spongebob } from "../fixtures.js";
 import { assertSubset } from "../test-utils.js";
 
 suite("User Model tests", () => {
@@ -17,6 +17,14 @@ suite("User Model tests", () => {
   test("create a user", async () => {
     const newUser = await db.userStore.addUser(maggie);
     assertSubset(maggie, newUser);
+  });
+
+  test("update a user" , async () => {
+    let newUserMaggie = await db.userStore.addUser(maggie);
+    const newUserSpongebob = await db.userStore.addUser(spongebob);
+    await db.userStore.updateUser(newUserMaggie, newUserSpongebob);
+    newUserMaggie = db.userStore.getUserById(newUserMaggie._id);
+    assertSubset(newUserMaggie, newUserSpongebob);
   });
 
   test("delete all userApi", async () => {
