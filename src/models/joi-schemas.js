@@ -33,6 +33,7 @@ export const PlaceMarkSpec = Joi.object()
 export const PlacemarkSpecPlus = PlaceMarkSpec.keys({
     userid: IdSpec,
     categoryid: IdSpec,
+    img: String,
     _id: IdSpec,
     __v: Joi.number(),
 }).label("PlacemarkDetailsPlus")

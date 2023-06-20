@@ -15,6 +15,7 @@ const placemarkSchema = new Schema({
     description: String,
     latitude: Number,
     longitude: Number,
+    img: String,
 });
 
 export const Placemark = Mongoose.model("Placemark", placemarkSchema);
