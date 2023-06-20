@@ -37,25 +37,4 @@ export const dashboardController ={
         },
     },
 
-    addPois: {
-        validate: {
-            payload: PlaceMarkSpec,
-            options: { abortEarly: false },
-            failAction: function (request, h, error) {
-                return h.view("dashboard", { title: "Add Placemark error", errors: error.details}).takeover().code(400);
-            },
-        },
-        handler: async function (request, h) {
-            const loggedInUser = request.auth.credentials;
-            const categoryid = request.params.id;
-            const newPlacemark = {
-                name: request.payload.name,
-                description: request.payload.description,
-                latitude: request.payload.latitude,
-                longitude: request.payload.longitude,
-            };
-            await db.placemarkStore.addPlacemark(categoryid,newPlacemark,loggedInUser._id);
-            return h.redirect("/dashboard");
-        },
-    },
 }

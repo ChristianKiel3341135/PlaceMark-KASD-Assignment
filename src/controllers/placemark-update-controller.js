@@ -2,7 +2,7 @@ import {db} from "../models/db.js";
 import {PlaceMarkSpec} from "../models/joi-schemas.js";
 
 
-export const placemarkController = {
+export const placemarkUpdateController = {
 
     showUpdatePlacemark:{
         handler: async function (request, h) {
