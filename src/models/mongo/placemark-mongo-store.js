@@ -45,9 +45,13 @@ export const placemarkMongoStore = {
         thisPlacemark.description = updatedPlacemark.description;
         thisPlacemark.latitude = updatedPlacemark.latitude;
         thisPlacemark.longitude = updatedPlacemark.longitude;
-        if(updatedPlacemark.img){
-            thisPlacemark.img = updatedPlacemark.img;
-        }
+
+        await thisPlacemark.save();
+    },
+
+    async updatePlacemarkImage(placemark, updatedPlacemark) {
+        const thisPlacemark = await Placemark.findOne({_id: placemark._id});
+        thisPlacemark.img = updatedPlacemark.img;
         await thisPlacemark.save();
     }
 };

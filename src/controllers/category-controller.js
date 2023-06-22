@@ -34,43 +34,6 @@ export const categoryController = {
         },
     },
 
-    uploadImage: {
-        handler: async function (request, h) {
-            try {
-                const placemark = await db.placemarkStore.getPlacemarkById(request.params.id);
-                const file = request.payload.imagefile;
-                if (Object.keys(file).length > 0) {
-                    const url = await imageStore.uploadImage(request.payload.imagefile);
-                    placemark.img = url;
-                    await db.placemarkStore.updatePlacemark(placemark, placemark);
-                }
-                return h.redirect(`/category/${placemark.categoryid}`);
-            } catch (err) {
-                console.log(err);
-                return h.redirect(`/category/${placemark.categoryid}`);
-            }
-        },
-        payload: {
-            multipart: true,
-            output: "data",
-            maxBytes: 209715200,
-            parse: true,
-        },
-    },
 
-    deleteImage: {
-        handler: async function (request, h) {
-            try {
-                const placemark = await db.placemarkStore.getPlacemarkById(request.params.id);
-                await imageStore.deleteImage(placemark.img);
-                placemark.img = "";
-                await db.placemarkStore.updatePlacemark(placemark,placemark);
-                return h.redirect(`/category/${placemark.categoryid}`);
-            } catch (err) {
-                console.log(err);
-                return h.redirect(`/category/${placemark.categoryid}`);
-            }
-        },
-    }
 
 }

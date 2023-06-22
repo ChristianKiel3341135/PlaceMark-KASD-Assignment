@@ -16,11 +16,13 @@ export const webRoutes = [
     { method: "GET", path: "/dashboard", config: dashboardController.index },
     { method: "POST", path: "/dashboard/addCategory", config: dashboardController.addCategory },
     { method: "GET", path: "/dashboard/deleteCategory/{id}", config: dashboardController.deleteCategory },
+    { method: "GET", path: "/dashboard/updateCategory/{id}", config: dashboardController.showUpdateCategory},
+    { method: "POST", path: "/dashboard/updateCategory/{id}", config: dashboardController.updateCategory},
 
     { method: "GET", path: "/category/{id}", config: categoryController.index },
     { method: "POST", path: "/category/{id}/addPoi", config: categoryController.addPoi },
-    { method: "POST", path: "/category/{id}/uploadimage", config: categoryController.uploadImage },
-    { method: "GET", path: "/category/{id}/deleteImage", config: categoryController.deleteImage},
+    { method: "POST", path: "/category/{id}/uploadimage", config: placemarkUpdateController.uploadImage },
+    { method: "GET", path: "/category/{id}/deleteImage", config: placemarkUpdateController.deleteImage},
 
     { method: "GET", path: "/updatePlacemark/{id}", config: placemarkUpdateController.showUpdatePlacemark},
     { method: "POST", path: "/updatePlacemark/{id}", config: placemarkUpdateController.updatePlacemark},

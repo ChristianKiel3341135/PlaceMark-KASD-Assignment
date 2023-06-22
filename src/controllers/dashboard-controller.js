@@ -37,4 +37,30 @@ export const dashboardController ={
         },
     },
 
+    showUpdateCategory:{
+        handler: async function (request, h) {
+            const loggedInUser = request.auth.credentials;
+            const category = await db.categoryStore.getCategoryById(request.params.id);
+            return h.view("UpdateCategory", {title: "Edit Category", user: loggedInUser, category: category});
+        },
+    },
+
+    updateCategory:{
+        validate: {
+            payload: CategorySpec,
+            options: { abortEarly: false },
+            failAction: function (request, h, error) {
+                return h.view("UpdateCategory", { title: "Edit placemark error", errors: error.details }).takeover().code(400);
+            },
+        },
+        handler: async function (request, h) {
+            const oldCategory = await db.categoryStore.getCategoryById(request.params.id);
+            const newCategory = {
+                title: request.payload.title,
+            };
+            await db.categoryStore.updateCategory(oldCategory, newCategory);
+            return h.redirect(`/dashboard`);
+        },
+    }
+
 }
