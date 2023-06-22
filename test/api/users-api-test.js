@@ -41,6 +41,11 @@ suite("User API tests", () => {
     assert.deepEqual(users[0], returnedUser);
   });
 
+  test("get a user per mail", async () => {
+    const returnedUser = await apiService.getUserPerMail(users[0].email);
+    assert.deepEqual(users[0], returnedUser);
+  });
+
   test("get a user - bad id", async () => {
     try {
       const returnedUser = await apiService.getUser("1234");

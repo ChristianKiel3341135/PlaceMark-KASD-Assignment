@@ -14,6 +14,11 @@ export const apiService = {
     return res.data;
   },
 
+  async getUserPerMail(email) {
+    const res = await axios.get(`${this.placemarkUrl}/api/users/email/${email}`);
+    return res.data;
+  },
+
   async getAllUsers() {
     try {
       const res = await axios.get(`${this.placemarkUrl}/api/users`);

@@ -45,6 +45,29 @@ export const userApi = {
     response: { schema: UserSpecPlus, failAction: validationError },
   },
 
+  findOneEmail: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      try {
+        const user = await db.userStore.getUserByEmail(request.params.email);
+        if (!user) {
+          return Boom.notFound("No User with this email");
+        }
+        return user;
+      } catch (err) {
+        return Boom.serverUnavailable("No User with this email");
+      }
+    },
+    tags: ["api"],
+    description: "Get a specific user",
+    notes: "Returns user details",
+    validate: { params: { email: String }, failAction: validationError },
+    response: { schema: UserSpecPlus, failAction: validationError },
+  },
+
+
   create: {
     auth: false,
     handler: async function (request, h) {
