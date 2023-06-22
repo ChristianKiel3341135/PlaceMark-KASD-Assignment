@@ -22,14 +22,14 @@ export const placemarkUpdateController = {
         },
         handler: async function (request, h) {
             const oldPlacemark = await db.placemarkStore.getPlacemarkById(request.params.id);
-            const newUser = {
+            const newPlacemark = {
                 name: request.payload.name,
                 description: request.payload.description,
                 latitude: Number(request.payload.latitude),
                 longitude: Number(request.payload.longitude),
             };
-            await db.placemarkStore.updatePlacemark(oldPlacemark, newUser);
-            return h.redirect(`/dashboard`);
+            await db.placemarkStore.updatePlacemark(oldPlacemark, newPlacemark);
+            return h.redirect(`/category/${oldPlacemark.categoryid}`);
         },
     }
 }

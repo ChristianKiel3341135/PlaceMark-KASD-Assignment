@@ -41,17 +41,26 @@ export const seedData = {
     foodAndDrinksCategory: {
       title: "Food and Drinks",
     },
+
+    museums:{
+      title: "Museums"
+    },
+
+    sport: {
+      title: "Sport Activties"
+    }
   },
 
   placemarks: {
     _model: "Placemark",
       regensburgCinema: {
-        name: "Cinemaxx",
-        description: "Regensburger Cinema to enjoy all the newest Movies while eating" +
+        name: "Cinemaxx Regensburg",
+        description: "Cinema to enjoy all the newest Movies while eating" +
             " Nachos, Popcorn or both of course.",
         latitude: 49.013432,
         longitude: 12.101624,
-        categoryid: "->categories.entertainmentCategory"
+        categoryid: "->categories.entertainmentCategory",
+        userid: "->users.admin"
       },
 
       newYorkBroadway: {
@@ -62,7 +71,26 @@ export const seedData = {
             " in the United States.",
         latitude: 40.790886,
         longitude: -73.974709,
-        categoryid: "->categories.entertainmentCategory"
+        categoryid: "->categories.entertainmentCategory",
+        userid: "->users.admin"
+      },
+
+      golfmuseum: {
+      name: "Golf Museum Regensburg",
+        description: "Golf History and more",
+        latitude: 49.013632,
+        longitude: 12.101824,
+        categoryid: "->categories.museums",
+        userid: "->users.admin"
+      },
+
+      tennisCourt: {
+        name: "Tennis Court",
+        description: "Play Tennis for a small price",
+        latitude: 49.05,
+        longitude: 12.05,
+        categoryid: "->categories.sport",
+        userid: "->users.admin"
       }
   },
 };
