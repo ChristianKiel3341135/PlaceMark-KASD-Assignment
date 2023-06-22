@@ -22,6 +22,7 @@ export const categoryController = {
             },
         },
         handler: async function (request, h) {
+            const loggedInUser = request.auth.credentials;
             const category = await db.categoryStore.getCategoryById(request.params.id);
             const newPlacemark = {
                 name: request.payload.name,
@@ -29,7 +30,7 @@ export const categoryController = {
                 latitude: Number(request.payload.latitude),
                 longitude: Number(request.payload.longitude),
             };
-            await db.placemarkStore.addPlacemark(category._id, newPlacemark);
+            await db.placemarkStore.addPlacemark(category._id, newPlacemark,loggedInUser._id);
             return h.redirect(`/category/${category._id}`);
         },
     },
