@@ -3,7 +3,7 @@ import {PlaceMarkSpec} from "../models/joi-schemas.js";
 import {imageStore} from "../models/image-store.js";
 
 
-export const placemarkUpdateController = {
+export const placemarkController = {
 
     showUpdatePlacemark:{
         handler: async function (request, h) {
@@ -71,5 +71,13 @@ export const placemarkUpdateController = {
                 return h.redirect(`/category/${placemark.categoryid}`);
             }
         },
-    }
+    },
+
+    deletePlacemark: {
+        handler: async function (request, h) {
+            const placemark = await db.placemarkStore.getPlacemarkById(request.params.id);
+            await db.placemarkStore.deletePlacemarkById(placemark._id);
+            return h.redirect(`/category/${placemark.categoryid}`);
+        },
+    },
 }
