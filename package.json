@@ -1,5 +1,5 @@
 {
-  "name": "donation-hapi",
+  "name": "placemark-hapi",
   "version": "0.1.0",
   "description": "",
   "main": "src/sever.js",
