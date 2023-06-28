@@ -18,6 +18,7 @@ import HapiSwagger from "hapi-swagger";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+
 const result = dotenv.config();
 if (result.error) {
     console.log(result.error.message);
@@ -63,6 +64,10 @@ async function init() {
     server.validator(Joi);
 
     Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+        arg1 = arg1.toString();
+        arg2 = arg2.toString();
+        console.log(arg1)
+        console.log(arg2)
         return (arg1 === arg2) ? options.fn(this) : options.inverse(this);
     });
 
