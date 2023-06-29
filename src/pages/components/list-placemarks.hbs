@@ -37,19 +37,10 @@
                     </figure>
                 </div>
                 {{#if img}}
-                    {{#if ../user.isAdmin}}
                         <a href="/category/{{_id}}/deleteImage">
                             <i class="fas fa-trash"></i>
                             Delete Image
                         </a>
-                    {{else}}
-                        {{#ifEquals ../user._id userid}}
-                            <a href="/category/{{_id}}/deleteImage">
-                                <i class="fas fa-trash"></i>
-                                Delete Image
-                            </a>
-                        {{/ifEquals}}
-                    {{/if}}
                 {{/if}}
 
                 <div class="card-content">
